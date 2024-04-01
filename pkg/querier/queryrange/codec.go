@@ -885,7 +885,7 @@ func (c Codec) EncodeRequest(ctx context.Context, r queryrangebase.Request) (*ht
 		}
 
 		u := &url.URL{
-			Path:     "/loki/api/experimental/detected_fields",
+			Path:     "/loki/api/v1/detected_fields",
 			RawQuery: params.Encode(),
 		}
 		req := &http.Request{
@@ -905,7 +905,7 @@ func (c Codec) EncodeRequest(ctx context.Context, r queryrangebase.Request) (*ht
 		}
 
 		u := &url.URL{
-			Path:     "/loki/api/experimental/patterns",
+			Path:     "/loki/api/v1/patterns",
 			RawQuery: params.Encode(),
 		}
 		req := &http.Request{
@@ -943,9 +943,9 @@ func (c Codec) Path(r queryrangebase.Request) string {
 	case *logproto.VolumeRequest:
 		return "/loki/api/v1/index/volume_range"
 	case *DetectedFieldsRequest:
-		return "/loki/api/experimental/detected_fields"
+		return "/loki/api/v1/detected_fields"
 	case *QueryPatternsRequest:
-		return "/loki/api/experimental/patterns"
+		return "/loki/api/v1/patterns"
 	}
 
 	return "other"
